@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Card Increment</title>
+    <style>
+        body{
+            background-color: #ffffff;
+        }
+        .container{
+            height: 550px;
+            width: 280px;
+            background-color: #f2f2f2;
+            box-shadow: 0 0 10px rgba(0, 0,0,0.9);
+            border-radius: 15px;
+            display: block;
+            margin: 0px auto;
+            padding: 10px 0px;
+
+        }
+        .img-product{
+            height: 250px;
+            border-radius:15px;
+            display: block;
+            margin: 0px auto;
+            
+        }
+        .heading-txt{
+            text-align: center;
+            font-size: large;
+            font-weight: 500;
+        }
+        .item-price{
+            margin-left: 25px;
+            font-weight: 600;
+        }
+        .sale{
+            color: green;
+            padding-left: 10px;
+        }
+        .btn-cart{
+            display: flex;
+            direction: row;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .cart{
+            height: 40px;
+            width: 200px;
+            border-radius: 25px;
+        
+
+        }
+        .cart:hover{
+            background-color: green;
+
+        }
+        .like{
+         background-color: transparent;
+         border: transparent;
+        }
+        .like-img{
+            height: 40px;
+        }
+        
+        .btn-buy{
+            height: 40px;
+            width: 260px;
+            display: block;
+            margin: 10px auto;
+            border-radius: 20px;
+
+        }
+        .btn-buy:hover{
+            background-color: orange;
+        }
+        .quantity{
+            margin: auto 25px;
+        }
+        .Total{
+            margin: 5px 25px;
+            color: green;
+
+        }
+        .qty-icon{
+            height: 30px;
+            cursor: pointer;
+        }
+        .qty-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .qty-txt{
+            font-size:  25px;
+            margin: 0px 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="zoro.webp" class="img-product">
+        <p class="heading-txt">Zoro Asua 9 Sword Style Figure</p>
+        <p class="item-price"><del>₹2400.00</del><span class="sale">₹1499.00</span></p>
+        <p id="showquantity" class="quantity">1 X 1499 </p>
+        <p id="showtotal" class="Total"> Total:- 1499</p>
+        <div class="btn-cart">
+            <button class="cart">Add to Cart</button>
+            <button class="like" onclick="like()" id="like-img"><img src="black-heart.png" class="like-img"></button>
+        </div>
+        <div><button class="btn-buy">Buy Now</button></div>
+        <div class="qty-container">
+            
+            <img src="minus.png"class= "qty-icon" id="dec" onclick="dec()">
+            <span class="qty-txt" id="quantity">1</span>
+            <img src="plus.png" class="qty-icon" id="inc" onclick="inc()">
+        </div>
+    </div>
+
+    <script>
+        function inc(){
+            const quantity = document.getElementById("quantity");
+            const showquantity =document.getElementById("showquantity");
+            const showtotal =document.getElementById("showtotal");
+            const qty = parseInt(quantity.innerText);
+
+            if(qty<10){
+                quantity.innerText = qty + 1;
+
+            }
+            else
+            {
+                alert("you can't buy more than 10")
+            }
+            showquantity.innerText= `${quantity.innerText} X 1499.00`;
+            showtotal.innerText=`${quantity.innerText*1499.00}`
+
+            
+        }
+        function dec(){
+            const quantity = document.getElementById("quantity");
+            const showquantity =document.getElementById("showquantity");
+            const showtotal =document.getElementById("showtotal");  
+            const qty = parseInt(quantity.innerText);
+
+            if(qty>1){
+                quantity.innerText = qty - 1;
+
+            }   
+            else
+            {
+                alert("you must buy 1 qty")
+            }
+            showquantity.innerText= `${quantity.innerText} X 1499.00`;
+            showtotal.innerText=`${quantity.innerText*1499.00}`
+        }
+        
+        
+    </script>
+</body>
+</html>
